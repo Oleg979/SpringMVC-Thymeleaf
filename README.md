@@ -1,1 +1,1 @@
-# SpringThymeleaf
+# Spring Thymeleaf Web App
