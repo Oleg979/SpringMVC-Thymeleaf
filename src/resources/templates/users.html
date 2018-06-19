@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <meta charset="UTF-8">
+        <title>Users list</title>
+    </head>
+    <body>
+        <div class="container">
+           <h1>List of users</h1>
+           <h2>Total count: <span th:text="${#lists.size(users)}"/></h2>
+           <div th:if="${#lists.isEmpty(users)}">
+               There are no users at all!
+           </div>
+           <div>
+               <div th:each="user : ${users}">
+                   <span th:text="${user.name} "/>
+                   <span th:text="${user.password}"/>
+                   <a th:href="@{'/edit/{id}'(id=${user.id})}"><button>Edit</button></a>
+                   <a th:href="@{'/delete/{id}'(id=${user.id})}"><button class="del">Delete</button></a>
+               </div>
+           </div>
+           <button onclick="location.href='/add'">Add New User</button>
+        </div>
+    </body>
+</html>
