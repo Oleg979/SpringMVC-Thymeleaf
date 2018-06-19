@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
+        <link rel="stylesheet" th:href="@{'/style.css'}" type="text/css">
+        <meta charset="UTF-8">
+        <title>Edit user</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Edit user <span th:text="${userId}"/></h1>
+            <h2 th:if="${msg}" th:text="${msg}" class="error"/>
+            <form th:action="@{'/edit/{id}'(id=${userId})}" method="post">
+                <label>
+                    Name:
+                    <input type="text" placeholder="Enter name..." th:name="name" th:value="${userName}"/>
+                </label>
+                <label>
+                    Password:
+                    <input type="password" placeholder="Enter password..." th:name="password" th:value="${userPass}"/>
+                </label>
+                <input type="submit" value="Edit"/>
+            </form>
+            <button onclick="location.href='/users'">To User List</button>
+        </div>
+</body>
+</html>
